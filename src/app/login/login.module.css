@@ -1,0 +1,670 @@
+/* ===============================
+   ANIMATIONS 
+=============================== */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float1 {
+  0% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+  100% { transform: translateY(0) rotate(-2deg); }
+}
+
+@keyframes float2 {
+  0% { transform: translateY(0) rotate(3deg); }
+  50% { transform: translateY(-10px) rotate(-1deg); }
+  100% { transform: translateY(0) rotate(3deg); }
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 0.5; }
+}
+
+/* ===============================
+   LAYOUT
+=============================== */
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #09090b;
+  font-family: var(--font-inter), sans-serif;
+  overflow: hidden;
+}
+
+/* --- Left Side: Immersive Showcase --- */
+.showcaseSection {
+  flex: 1.2;
+  background: #09090b; /* Deep dark background */
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(79, 70, 229, 0.15), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(56, 189, 248, 0.15), transparent 25%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  overflow: hidden;
+}
+
+/* Abstract Grid Overlay */
+.showcaseSection::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+}
+
+.brandLogo {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+  animation: slideUpFade 0.8s ease forwards;
+}
+
+.logoIcon {
+  width: 240px;
+  height: 90px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brandLogo h2 {
+  font-size: 24px;
+  font-weight: 800;
+  color: white;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.showcaseContent {
+  position: relative;
+  z-index: 1;
+  max-width: 560px;
+  width: 100%;
+}
+
+.glassBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+  color: #e2e8f0;
+  font-size: 13px;
+  font-weight: 600;
+  backdrop-filter: blur(12px);
+  margin-bottom: 32px;
+  animation: slideUpFade 0.8s ease forwards;
+}
+
+.sparkleIcon {
+  color: #fbbf24;
+}
+
+.showcaseTitle {
+  font-size: 56px;
+  font-weight: 900;
+  color: white;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin: 0 0 24px 0;
+  animation: slideUpFade 0.8s ease forwards;
+  animation-delay: 0.1s;
+  opacity: 0;
+}
+
+.textGradient {
+  background: linear-gradient(to right, #818cf8, #c084fc, #38bdf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.showcaseDesc {
+  font-size: 18px;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0 0 60px 0;
+  max-width: 480px;
+  animation: slideUpFade 0.8s ease forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+}
+
+/* Floating UI Elements */
+.floatingUI {
+  position: relative;
+  height: 240px;
+  animation: slideUpFade 1s ease forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
+}
+
+.glassCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  position: absolute;
+}
+
+.float1 {
+  width: 320px;
+  top: 20px;
+  left: 0;
+  animation: float1 6s ease-in-out infinite;
+  z-index: 2;
+}
+
+.float2 {
+  width: auto;
+  bottom: 0;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 24px;
+  animation: float2 7s ease-in-out infinite;
+  animation-delay: 1s;
+  z-index: 3;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.dotGroup {
+  display: flex;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.cardTitle {
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.cardBody {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.taskRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.taskLine {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+  width: 100%;
+}
+
+.taskLineShort {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  width: 60%;
+}
+
+.avatarGroup {
+  display: flex;
+}
+
+.avatarMini {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #18181b;
+}
+
+.cardText {
+  color: #e2e8f0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.glowOrb {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  animation: pulseGlow 8s ease-in-out infinite;
+}
+
+.creatorCredit {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  color: #64748b;
+  font-size: 13px;
+  z-index: 10;
+  animation: slideUpFade 0.8s ease forwards;
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+.creatorCredit strong {
+  color: #e2e8f0;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* --- Right Side: Form --- */
+.formSection {
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  position: relative;
+  z-index: 10;
+  animation: slideUpFade 0.6s ease forwards;
+}
+
+.formWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 420px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: slideUpFade 0.8s ease forwards;
+  animation-delay: 0.1s;
+}
+
+.header h1 {
+  font-size: 36px;
+  font-weight: 800;
+  color: #f0f0f5;
+  letter-spacing: -1px;
+  margin: 0 0 10px 0;
+}
+
+.subtitle {
+  color: #8b8b9e;
+  font-size: 16px;
+  margin: 0;
+}
+
+.errorBox {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  animation: slideUpFade 0.4s ease forwards;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  opacity: 0;
+  animation: slideUpFade 0.8s ease forwards;
+}
+
+.inputGroup:nth-child(1) { animation-delay: 0.2s; }
+.inputGroup:nth-child(2) { animation-delay: 0.3s; }
+.inputGroup:nth-child(3) { animation-delay: 0.4s; }
+.inputGroup:nth-child(4) { animation-delay: 0.5s; }
+
+.inputGroup label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e0e0f0;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 16px;
+  color: #55556a;
+  transition: all 0.3s ease;
+}
+
+.inputWrapper input {
+  width: 100%;
+  padding: 14px 46px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.03);
+  font-size: 15px;
+  transition: all 0.3s ease;
+  color: #f0f0f5;
+}
+
+.inputWrapper input::-ms-reveal,
+.inputWrapper input::-ms-clear {
+  display: none;
+}
+
+.inputWrapper input:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.inputWrapper input:focus {
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+}
+
+.inputWrapper input:focus + .inputIcon {
+  color: #818cf8;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #94a3b8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+.passwordToggle:hover {
+  color: #f0f0f5;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  opacity: 0;
+  animation: slideUpFade 0.8s ease forwards;
+  animation-delay: 0.6s;
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.3);
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+  opacity: 0.95;
+}
+
+.primaryButton:active {
+  transform: translateY(1px);
+}
+
+.primaryButton:disabled {
+  background: #27272a;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.forgotPassword {
+  text-align: center;
+  font-size: 14px;
+  color: #55556a;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+  opacity: 0;
+  animation: slideUpFade 0.8s ease forwards;
+  animation-delay: 0.7s;
+}
+
+.forgotPassword:hover {
+  color: #818cf8;
+}
+
+.bottomToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  opacity: 0;
+  animation: slideUpFade 0.8s ease forwards;
+  animation-delay: 0.8s;
+}
+
+.navText {
+  font-size: 14px;
+  color: #55556a;
+  font-weight: 500;
+}
+
+.toggleButton {
+  background: transparent;
+  border: none;
+  color: #6366f1;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.toggleButton:hover {
+  background-color: rgba(99, 102, 241, 0.15);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .showcaseSection {
+    display: none;
+  }
+}
+
+/* Password Strength Indicator */
+.passwordStrengthContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+  animation: slideUpFade 0.4s ease forwards;
+}
+
+.strengthBarBg {
+  width: 100%;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.strengthBarFill {
+  height: 100%;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.strengthLabelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.strengthLabelText {
+  font-size: 12px;
+  color: #8b8b9e;
+  font-weight: 500;
+}
+
+.passwordRequirements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 4px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.reqItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #94a3b8;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.reqMet {
+  color: #34d399;
+}
+
+.matchFeedback {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 4px;
+  animation: slideUpFade 0.3s ease forwards;
+}
+
+/* Success State UI */
+.successState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: slideUpFade 0.6s ease forwards;
+}
+
+.successIconWrapper {
+  width: 80px;
+  height: 80px;
+  background-color: rgba(99, 102, 241, 0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: #818cf8;
+  box-shadow: 0 0 0 10px rgba(99, 102, 241, 0.08);
+}
+
+.successState h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #f0f0f5;
+  margin: 0 0 12px 0;
+  letter-spacing: -1px;
+}
+
+.successDesc {
+  font-size: 16px;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+  max-width: 320px;
+}
+
+.successDesc strong {
+  color: #f0f0f5;
+}
+
+.secondaryButton {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f0f0f5;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.secondaryButton:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Spinner Animation */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
