@@ -75,7 +75,7 @@ export default function LoginPage() {
           return;
         }
         
-        const res = await signup(formData);
+        const res = (await signup(formData)) as any;
         if (res?.error) setError(res.error);
         if (res?.success && res?.message === 'check_email') {
           setSubmittedEmail(email);
